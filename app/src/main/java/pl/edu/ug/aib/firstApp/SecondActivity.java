@@ -6,8 +6,6 @@ import android.support.v7.app.ActionBarActivity;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import org.androidannotations.annotations.AfterExtras;
-import org.androidannotations.annotations.AfterInject;
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EActivity;
@@ -28,7 +26,7 @@ public class SecondActivity extends ActionBarActivity {
 
     @AfterViews
     void init() {
-        welcomeText.setText("Cześć " + username + "!");
+        welcomeText.setText(String.format(getString(R.string.welcomeWithName), username));
     }
 
     @Click

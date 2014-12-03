@@ -20,7 +20,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/welcomeText"
+        android:singleLine="true"
         android:hint="@string/username"
+        android:inputType="textCapWords"
         />
 
     <EditText
@@ -28,6 +30,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/username"
+        android:singleLine="true"
         android:hint="@string/password"
         android:inputType="textPassword"
         />

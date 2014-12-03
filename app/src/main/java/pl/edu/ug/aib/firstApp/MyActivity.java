@@ -23,7 +23,7 @@ public class MyActivity extends ActionBarActivity {
     @Click
     void loginClicked()    {
         if (username.getText().length() < 3) {
-            Toast.makeText(this, "Nazwa użytkownika musi się składać z przynajmniej 3 znaków", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getString(R.string.uernameTooShort), Toast.LENGTH_SHORT).show();
             return;
         }
 

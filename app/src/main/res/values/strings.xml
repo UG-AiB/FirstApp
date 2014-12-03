@@ -10,5 +10,7 @@
     <string name="login">Zaloguj się</string>
     <string name="phoneNumber">numer telefonu</string>
     <string name="dial">Zadzwoń</string>
+    <string name="uernameTooShort">Nazwa użytkownika musi się składać z przynajmniej 3 znaków</string>
+    <string name="welcomeWithName">Cześć %s!</string>
 
 </resources>
