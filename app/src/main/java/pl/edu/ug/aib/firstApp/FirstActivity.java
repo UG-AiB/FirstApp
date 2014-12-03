@@ -12,7 +12,7 @@ import org.androidannotations.annotations.ViewById;
 
 @EActivity(R.layout.activity_my)
 @OptionsMenu(R.menu.my)
-public class MyActivity extends ActionBarActivity {
+public class FirstActivity extends ActionBarActivity {
 
     @ViewById
     public EditText username;
