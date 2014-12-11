@@ -1,5 +1,6 @@
 package pl.edu.ug.aib.firstApp;
 
+import android.app.ProgressDialog;
 import android.support.v7.app.ActionBarActivity;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -10,11 +11,13 @@ import org.androidannotations.annotations.Bean;
 import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.ItemClick;
+import org.androidannotations.annotations.NonConfigurationInstance;
 import org.androidannotations.annotations.OptionsItem;
 import org.androidannotations.annotations.OptionsMenu;
 import org.androidannotations.annotations.ViewById;
 
 import pl.edu.ug.aib.firstApp.adapter.PersonListAdapter;
+import pl.edu.ug.aib.firstApp.data.FacebookPage;
 import pl.edu.ug.aib.firstApp.data.Person;
 
 @EActivity(R.layout.activity_my)
@@ -33,14 +36,18 @@ public class FirstActivity extends ActionBarActivity {
     @Bean
     PersonListAdapter adapter;
 
+    @Bean
+    @NonConfigurationInstance
+    RestBackgroundTask restBackgroundTask;
+
+    ProgressDialog ringProgressDialog;
+
     @AfterViews
     void init() {
-//        String[] values = new String[] {"A", "B", "C", "D", "E", "F", "G", "H"};
-
-//        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
-//                android.R.layout.simple_list_item_1, android.R.id.text1, values);
-
         list.setAdapter(adapter);
+        ringProgressDialog = new ProgressDialog(this);
+        ringProgressDialog.setMessage("Loading...");
+        ringProgressDialog.setIndeterminate(true);
     }
 
     @ItemClick
@@ -55,8 +62,18 @@ public class FirstActivity extends ActionBarActivity {
             Toast.makeText(this, getString(R.string.uernameTooShort), Toast.LENGTH_SHORT).show();
             return;
         }
+        ringProgressDialog.show();
+        restBackgroundTask.doInBackground(username.getText().toString());
+    }
 
-        SecondActivity_.intent(this).username(username.getText().toString()).start();
+    public void goToSecondActivity(FacebookPage fbPage) {
+        ringProgressDialog.dismiss();
+        SecondActivity_.intent(this).fbPage(fbPage).start();
+    }
+
+    public void showError(Exception e) {
+        ringProgressDialog.dismiss();
+        Toast.makeText(this, e.getMessage(), Toast.LENGTH_LONG).show();
     }
 
     @OptionsItem

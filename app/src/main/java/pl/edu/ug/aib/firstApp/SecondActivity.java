@@ -12,11 +12,13 @@ import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.Extra;
 import org.androidannotations.annotations.ViewById;
 
+import pl.edu.ug.aib.firstApp.data.FacebookPage;
+
 @EActivity(R.layout.activity_second)
 public class SecondActivity extends ActionBarActivity {
 
     @Extra
-    String username;
+    FacebookPage fbPage;
 
     @ViewById
     TextView welcomeText;
@@ -26,7 +28,8 @@ public class SecondActivity extends ActionBarActivity {
 
     @AfterViews
     void init() {
-        welcomeText.setText(String.format(getString(R.string.welcomeWithName), username));
+        welcomeText.setText(String.format(getString(R.string.welcomeWithName), fbPage.name));
+        phoneNumber.setText(fbPage.phone);
     }
 
     @Click
