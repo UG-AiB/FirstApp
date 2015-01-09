@@ -21,7 +21,7 @@ import pl.edu.ug.aib.firstApp.data.PhoneBook;
 
 @EActivity(R.layout.activity_my)
 @OptionsMenu(R.menu.my)
-public class FirstActivity extends ActionBarActivity {
+public class LoginActivity extends ActionBarActivity {
 
     @ViewById
     ListView list;

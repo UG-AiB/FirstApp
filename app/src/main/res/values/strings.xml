@@ -7,7 +7,7 @@
     <string name="username">nazwa użytkownika</string>
     <string name="password">hasło</string>
     <string name="action_settings">Settings</string>
-    <string name="login">Zaloguj się</string>
+    <string name="refresh">Odśwież</string>
     <string name="phoneNumber">numer telefonu</string>
     <string name="dial">Zadzwoń</string>
     <string name="uernameTooShort">Nazwa użytkownika musi się składać z przynajmniej 3 znaków</string>
