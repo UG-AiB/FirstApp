@@ -9,6 +9,7 @@ import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Bean;
 import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EActivity;
+import org.androidannotations.annotations.Extra;
 import org.androidannotations.annotations.ItemClick;
 import org.androidannotations.annotations.NonConfigurationInstance;
 import org.androidannotations.annotations.OptionsItem;
@@ -18,10 +19,14 @@ import org.androidannotations.annotations.ViewById;
 import pl.edu.ug.aib.firstApp.adapter.PersonListAdapter;
 import pl.edu.ug.aib.firstApp.data.Person;
 import pl.edu.ug.aib.firstApp.data.PhoneBook;
+import pl.edu.ug.aib.firstApp.data.User;
 
 @EActivity(R.layout.activity_my)
 @OptionsMenu(R.menu.my)
 public class FirstActivity extends ActionBarActivity {
+
+    @Extra
+    User user;
 
     @ViewById
     ListView list;
@@ -41,6 +46,7 @@ public class FirstActivity extends ActionBarActivity {
         ringProgressDialog = new ProgressDialog(this);
         ringProgressDialog.setMessage("Loading...");
         ringProgressDialog.setIndeterminate(true);
+        Toast.makeText(this, user.sessionId, Toast.LENGTH_LONG).show();
     }
 
     @ItemClick
