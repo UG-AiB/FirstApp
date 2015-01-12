@@ -10,8 +10,7 @@ import org.springframework.http.converter.json.MappingJackson2HttpMessageConvert
 import pl.edu.ug.aib.firstApp.data.Person;
 import pl.edu.ug.aib.firstApp.data.PhoneBook;
 
-@Rest(rootUrl = "http://pegaz.wzr.ug.edu.pl:8080/rest",
-      converters = { MappingJackson2HttpMessageConverter.class })
+@Rest(rootUrl = "http://pegaz.wzr.ug.edu.pl:8080/rest", converters = { MappingJackson2HttpMessageConverter.class })
 @RequiresHeader({"X-Dreamfactory-Application-Name"})
 public interface PhoneBookRestClient extends RestClientHeaders {
 
