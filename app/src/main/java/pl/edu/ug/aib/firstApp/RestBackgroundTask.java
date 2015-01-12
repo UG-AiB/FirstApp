@@ -6,7 +6,6 @@ import org.androidannotations.annotations.RootContext;
 import org.androidannotations.annotations.UiThread;
 import org.androidannotations.annotations.rest.RestService;
 
-import pl.edu.ug.aib.firstApp.data.Person;
 import pl.edu.ug.aib.firstApp.data.PhoneBook;
 
 @EBean
@@ -16,7 +15,7 @@ public class RestBackgroundTask {
     FirstActivity activity;
 
     @RestService
-    PhoneBookRestClient restClient;
+    PhonebookRestClient restClient;
 
     @Background
     void getPhoneBook() {
