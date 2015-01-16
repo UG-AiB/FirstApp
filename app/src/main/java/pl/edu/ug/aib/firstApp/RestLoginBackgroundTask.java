@@ -16,7 +16,7 @@ public class RestLoginBackgroundTask {
     LoginActivity activity;
 
     @RestService
-    PhonebookRestClient restClient;
+    PhoneBokRestClient restClient;
 
     @Background
     void login(EmailAndPassword emailAndPassword) {

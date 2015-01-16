@@ -1,7 +1,5 @@
 package pl.edu.ug.aib.firstApp;
 
-import android.util.Log;
-
 import org.androidannotations.annotations.Background;
 import org.androidannotations.annotations.EBean;
 import org.androidannotations.annotations.RootContext;
@@ -19,7 +17,7 @@ public class RestBackgroundTask {
     FirstActivity activity;
 
     @RestService
-    PhonebookRestClient restClient;
+    PhoneBokRestClient restClient;
 
     @Background
     void getPhoneBook() {

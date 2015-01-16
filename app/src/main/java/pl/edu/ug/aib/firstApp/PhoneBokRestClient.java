@@ -16,7 +16,7 @@ import pl.edu.ug.aib.firstApp.data.User;
 @Rest(rootUrl = "http://pegaz.wzr.ug.edu.pl:8080/rest",
       converters = { MappingJackson2HttpMessageConverter.class })
 @RequiresHeader({"X-Dreamfactory-Application-Name"})
-public interface PhonebookRestClient extends RestClientHeaders {
+public interface PhoneBokRestClient extends RestClientHeaders {
 
     @Get("/db/person")
     PhoneBook getPhoneBook();
