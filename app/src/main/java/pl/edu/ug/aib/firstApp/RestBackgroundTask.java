@@ -17,7 +17,7 @@ public class RestBackgroundTask {
     FirstActivity activity;
 
     @RestService
-    PhoneBokRestClient restClient;
+    PhoneBookRestClient restClient;
 
     @Background
     void getPhoneBook() {
