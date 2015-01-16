@@ -7,10 +7,21 @@
     android:paddingBottom="@dimen/activity_vertical_margin"
     >
 
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@drawable/logo_example"
+        android:scaleType="centerInside"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="20dp"
+        />
+
     <EditText
         android:id="@+id/email"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@id/logo"
         android:inputType="textEmailAddress"
         android:hint="e-mail"
         />

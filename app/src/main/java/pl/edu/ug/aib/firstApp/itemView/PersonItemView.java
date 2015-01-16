@@ -1,6 +1,10 @@
 package pl.edu.ug.aib.firstApp.itemView;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.util.Base64;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -14,7 +18,7 @@ import pl.edu.ug.aib.firstApp.data.Person;
 public class PersonItemView extends RelativeLayout {
 
     @ViewById
-    TextView acronym;
+    ImageView avatar;
 
     @ViewById
     TextView name;
@@ -29,6 +33,20 @@ public class PersonItemView extends RelativeLayout {
     public void bind(Person person) {
         name.setText(person.name);
         company.setText(person.company);
+        if (person.pictureBytes != null) {
+            decodeAndSetImage(person.pictureBytes, avatar);
+        } else {
+            avatar.setImageDrawable(null);
+        }
+    }
+
+    private void decodeAndSetImage(String base64bytes, ImageView image) {
+        // zamień ciąg tekstowy Base-64 na tablicę bajtów
+        byte[] decodedString = Base64.decode(base64bytes, Base64.DEFAULT);
+        // utwórz bitmapę na podstawie ciągu bajtów z obrazem JPEG
+        Bitmap decodedBytes = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
+        // wstaw bitmapę do komponentu ImageView awatara
+        image.setImageBitmap(decodedBytes);
     }
 
 }

@@ -5,17 +5,16 @@
     android:padding="6dip"
     >
 
-    <TextView
-        android:id="@+id/acronym"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <com.makeramen.RoundedImageView
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/avatar"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:layout_centerVertical="true"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="16dip"
-        android:contentDescription="TODO"
-        android:text="A"
-        android:textColor="#e00000"
-        android:textSize="48sp"
+        android:layout_marginLeft="0dp"
+        android:layout_marginRight="10dip"
+        android:scaleType="centerInside"
+        app:riv_oval="true"
         />
 
     <TextView
@@ -23,7 +22,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:layout_toRightOf="@id/acronym"
+        android:layout_toRightOf="@id/avatar"
         android:text="Agnieszka Pałąk"
         android:textSize="20sp"
         />
@@ -33,7 +32,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
-        android:layout_toRightOf="@id/acronym"
+        android:layout_toRightOf="@id/avatar"
         android:layout_below="@id/name"
         android:text="Biedronka SA"
         android:textSize="16sp"
