@@ -11,6 +11,7 @@ import pl.edu.ug.aib.firstApp.data.EmailAndPassword;
 import pl.edu.ug.aib.firstApp.data.Person;
 import pl.edu.ug.aib.firstApp.data.PhoneBook;
 import pl.edu.ug.aib.firstApp.data.Picture;
+import pl.edu.ug.aib.firstApp.data.ResultWithId;
 import pl.edu.ug.aib.firstApp.data.User;
 
 @Rest(rootUrl = "http://pegaz.wzr.ug.edu.pl:8080/rest",
@@ -33,6 +34,6 @@ public interface PhoneBookRestClient extends RestClientHeaders {
 
     @Post("/db/pictures")
     @RequiresHeader({"X-Dreamfactory-Application-Name", "X-Dreamfactory-Session-Token"})
-    void addPicture(Picture picture);
+    ResultWithId addPicture(Picture picture);
 
 }

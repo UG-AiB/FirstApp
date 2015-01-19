@@ -183,8 +183,8 @@ public class PictureActivity extends ActionBarActivity {
         return imageEncoded;
     }
 
-    public void pictureAdded() {
-        Toast.makeText(this, "Picture added.", Toast.LENGTH_SHORT).show();
+    public void pictureAdded(int id) {
+        Toast.makeText(this, "Picture added with id=" + id + ".", Toast.LENGTH_SHORT).show();
     }
 
     public void addPictureFailed(Exception e) {
