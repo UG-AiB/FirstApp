@@ -48,7 +48,7 @@ public class LoginActivity extends ActionBarActivity {
 
     public void loginSuccess(User user) {
         ringProgressDialog.dismiss();
-        FirstActivity_.intent(this).user(user).start();
+        PictureActivity_.intent(this).user(user).start();
     }
 
     public void showError(Exception e) {

@@ -17,6 +17,8 @@
             </intent-filter>
         </activity>
 
+        <activity android:name="pl.edu.ug.aib.firstApp.PictureActivity_"/>
+
         <activity android:name="pl.edu.ug.aib.firstApp.FirstActivity_"/>
 
         <activity android:name="pl.edu.ug.aib.firstApp.SecondActivity_"/>
@@ -24,5 +26,9 @@
     </application>
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-feature android:name="android.hardware.camera" />
+    <uses-feature android:name="android.hardware.camera.autofocus" />
 
 </manifest>

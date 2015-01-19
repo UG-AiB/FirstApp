@@ -22,6 +22,7 @@ public interface PhoneBookRestClient extends RestClientHeaders {
     PhoneBook getPhoneBook();
 
     @Post("/db/person")
+    @RequiresHeader({"X-Dreamfactory-Application-Name", "X-Dreamfactory-Session-Token"})
     void addPhoneBookEntry(Person person);
 
     @Post("/user/session")
@@ -29,5 +30,9 @@ public interface PhoneBookRestClient extends RestClientHeaders {
 
     @Get("/db/pictures/{id}")
     Picture getPictureById(int id);
+
+    @Post("/db/pictures")
+    @RequiresHeader({"X-Dreamfactory-Application-Name", "X-Dreamfactory-Session-Token"})
+    void addPicture(Picture picture);
 
 }
