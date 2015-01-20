@@ -8,7 +8,7 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name="pl.edu.ug.aib.firstApp.LoginActivity_"
+            android:name="pl.edu.ug.aib.firstApp.PictureActivity_"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -17,7 +17,7 @@
             </intent-filter>
         </activity>
 
-        <activity android:name="pl.edu.ug.aib.firstApp.PictureActivity_"/>
+        <activity android:name="pl.edu.ug.aib.firstApp.LoginActivity_"/>
 
         <activity android:name="pl.edu.ug.aib.firstApp.FirstActivity_"/>
 

@@ -1,6 +1,7 @@
 package pl.edu.ug.aib.firstApp;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -48,7 +49,10 @@ public class LoginActivity extends ActionBarActivity {
 
     public void loginSuccess(User user) {
         ringProgressDialog.dismiss();
-        PictureActivity_.intent(this).user(user).start();
+        Intent returnIntent = new Intent();
+        returnIntent.putExtra("user", user);
+        setResult(RESULT_OK, returnIntent);
+        finish();
     }
 
     public void showError(Exception e) {

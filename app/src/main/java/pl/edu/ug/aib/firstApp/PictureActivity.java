@@ -16,10 +16,12 @@ import android.util.Log;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Bean;
 import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.Extra;
+import org.androidannotations.annotations.InstanceState;
 import org.androidannotations.annotations.NonConfigurationInstance;
 import org.androidannotations.annotations.OnActivityResult;
 import org.androidannotations.annotations.ViewById;
@@ -32,10 +34,12 @@ import pl.edu.ug.aib.firstApp.data.User;
 @EActivity(R.layout.activity_picture)
 public class PictureActivity extends ActionBarActivity {
 
-    public static final int SHOOT_WITH_CAMERA = 1;
-    public static final int SELECT_FILE = 2;
+    public static final int INTENT_SHOOT_WITH_CAMERA = 1;
+    public static final int INTENT_SELECT_FILE = 2;
+    public static final int INTENT_LOGIN = 3;
 
     @Extra
+    @InstanceState
     User user;
 
     @Bean
@@ -45,9 +49,23 @@ public class PictureActivity extends ActionBarActivity {
     @ViewById
     ImageView picture;
 
+    @OnActivityResult(INTENT_LOGIN)
+    void onLogin(int result, @OnActivityResult.Extra User user) {
+        if (result == RESULT_OK) {
+            this.user = user;
+            Log.d(getClass().getSimpleName(), "User received, session id=" + user.sessionId);
+            openPictureSourceSelectionDialog();
+        }
+    }
+
     @Click
     void addPictureClicked()    {
-        openPictureSourceSelectionDialog();
+        if (user == null) {
+            Log.d(getClass().getSimpleName(), "User = null, fetching...");
+            LoginActivity_.intent(this).startForResult(INTENT_LOGIN);
+        } else {
+            openPictureSourceSelectionDialog();
+        }
     }
 
     private void openPictureSourceSelectionDialog() {
@@ -74,18 +92,18 @@ public class PictureActivity extends ActionBarActivity {
     private void startSelectFromGalleryIntent() {
         Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
         intent.setType("image/*");
-        startActivityForResult(Intent.createChooser(intent, "Select File"), SELECT_FILE);
+        startActivityForResult(Intent.createChooser(intent, "Select File"), INTENT_SELECT_FILE);
     }
 
     private void startCameraIntent() {
         Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         File file = new File(Environment.getExternalStorageDirectory()+File.separator + "image.jpg");
         intent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(file));
-        startActivityForResult(intent, SHOOT_WITH_CAMERA);
+        startActivityForResult(intent, INTENT_SHOOT_WITH_CAMERA);
     }
 
-    @OnActivityResult(SHOOT_WITH_CAMERA)
-    void onPhotoFromCameraTaken(int resultCode, Intent data) {
+    @OnActivityResult(INTENT_SHOOT_WITH_CAMERA)
+    void onPhotoFromCameraTaken(int resultCode) {
         if (resultCode == RESULT_OK) {
             File rawCameraImageFile = new File(Environment.getExternalStorageDirectory() + File.separator + "image.jpg");
             addCompressedImageFromPath(rawCameraImageFile.getAbsolutePath());
@@ -93,7 +111,7 @@ public class PictureActivity extends ActionBarActivity {
         }
     }
 
-    @OnActivityResult(SELECT_FILE)
+    @OnActivityResult(INTENT_SELECT_FILE)
     void onPhotoFromGallerySelected(int resultCode, Intent data) {
         if (resultCode == RESULT_OK) {
             Uri selectedImageUri = data.getData();
