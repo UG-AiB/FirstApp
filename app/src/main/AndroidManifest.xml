@@ -8,7 +8,7 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name="pl.edu.ug.aib.firstApp.PictureActivity_"
+            android:name="pl.edu.ug.aib.firstApp.FragmentActivity_"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

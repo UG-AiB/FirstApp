@@ -12,5 +12,9 @@
     <string name="dial">Zadzwoń</string>
     <string name="uernameTooShort">Nazwa użytkownika musi się składać z przynajmniej 3 znaków</string>
     <string name="welcomeWithName">Cześć %s!</string>
+    <string name="drawer_open">Otwórz</string>
+    <string name="drawer_close">Zamknij</string>
+    <string name="title_home">Witamy!</string>
+    <string name="title_aboutapp">O aplikacji</string>
 
 </resources>
